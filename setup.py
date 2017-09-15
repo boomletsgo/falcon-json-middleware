@@ -21,7 +21,7 @@ setup(
     author='Jordan Ambra',
     author_email='jordan@serenitysoftware.io',
     url='https://github.com/boomletsgo/falcon-json-middleware',
-    version='0.3.0',
+    version='0.3.1',
     classifiers=classifiers,
     description='Falcon middleware to serialize and deserialize JSON requests and responses',
     keywords='falcon json middleware',

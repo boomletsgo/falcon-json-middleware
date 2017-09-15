@@ -11,7 +11,10 @@ class Middleware(object):
         if not req.content_length:
             return
 
-        body = req.stream.read()
+        body = req.stream.read().strip()
+
+        if not body:
+            return
 
         try:
             req.json = json.loads(body.decode('utf-8'))

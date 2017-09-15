@@ -15,6 +15,13 @@ class TestRequest(MiddlewareTestsMixin, testing.TestBase):
         super(TestRequest, self).setUp()
         self.api.add_route("/", RequestEndpoint())
 
+    def test_returns_early_if_no_legitimate_data_sent(self):
+        client = testing.TestClient(self.api)
+        result = client.simulate_post("/", body="  ")
+
+        assert result.status_code == 200
+        assert result.text == ""
+
     def test_json_properly_mirrored(self):
         client = testing.TestClient(self.api)
         result = client.simulate_post("/", body="{\"test\": \"content\"}")
